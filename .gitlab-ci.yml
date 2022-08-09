@@ -1,4 +1,5 @@
 build-maven-project:
+  image: maven
   stage: build
   script:
   - mvn package
