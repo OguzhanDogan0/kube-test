@@ -5,8 +5,6 @@ build-maven-project:
   artifacts:
     paths:
       - /home/gitlab-runner/
-  script:
-    - mvn clean
   
 sonarqube_master_job:
   stage: test
