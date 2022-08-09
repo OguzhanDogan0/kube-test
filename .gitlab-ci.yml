@@ -1,18 +1,14 @@
-image:
-  name:  sonarsource/sonar-scanner-cli:latest
-  entrypoint: [""]
-variables:
-  SONAR_TOKEN: ${SONAR_LOGIN}
-  SONAR_HOST_URL: ${SONAR_URL}
-  GIT_DEPTH: 0
-sonarqube-check:
-  stage: test
-  variables:
-    SONAR_PROJECT_BASE_DIR: "$CI_PROJECT_DIR"
+build-maven-project:
+  stage: build
   script:
-    - sonar-scanner -Dsonar.projectKey="$CI_PROJECT_NAME"
-  allow_failure: false
+    mvn package
+  artifacts:
+    paths:
+      - /home/gitlab-runner/
+      
+sonarqube_master_job:
+  stage: test
   only:
-    - branches
-    - merge_requests
-    - master
+    - main
+  script:
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.password=$SONAR_PASSWORD
