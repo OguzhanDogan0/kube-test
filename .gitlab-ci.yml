@@ -1,7 +1,7 @@
 build-maven-project:
   stage: build
   script:
-    mvn package
+  - mvn package
   artifacts:
     paths:
       - /home/gitlab-runner/
