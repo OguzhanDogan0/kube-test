@@ -10,7 +10,3 @@ test-code-job:
     stage: test
     script: echo "--- Test Başarılı"
 
-test-code-job2:
-    stage: test 
-    script:
-        -echo "*_'_* Test 2 Başarılı" 
