@@ -1,3 +1,5 @@
+before_script:
+  - export PATH=$PATH:/opt/apache-maven-3.8.1/bin
 build-maven-project:
   image: maven
   stage: build
