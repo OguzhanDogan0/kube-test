@@ -6,7 +6,7 @@ build-maven-project:
     paths:
       - /home/gitlab-runner/
   script:
-    - $MAVEN_HOME/bin/mvn clean
+    - mvn clean
   
 sonarqube_master_job:
   stage: test
