@@ -1,0 +1,48 @@
+pipeline{
+    agent any
+    stages{
+        stage("crudapi"){
+            steps{
+                echo "========executing A========"
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========emretest executed successfully========"
+                }
+                failure{
+                    echo "========emretest execution failed========"
+                }
+            }
+        }
+        stage('SCM') {
+	  steps {
+            checkout scm
+	  }
+        }
+        stage('SonarQube Analysis') {
+	    steps {
+		script {
+		     scannerHome = tool 'SonarScanner';
+		}
+                withSonarQubeEnv(installationName: 'sonarqube.sigmatelecom') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+              }
+	    }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+}
+
