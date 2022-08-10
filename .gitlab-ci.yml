@@ -1,5 +1,5 @@
 image:
-  name: sonarsource/sonar-scanner-cli:latest
+  name: sonarsource/sonar-scanner-cli
   entrypoint: [""]
 variables:
   SONAR_LOGIN: $SONAR_LOGIN
