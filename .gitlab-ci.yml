@@ -29,6 +29,6 @@ lint-test-job:
 deploy-job:      
   stage: deploy
   script:
-    - echo "Deploying application..."
+    - echo "Dploying application..."
     - echo "Application successfully deployed."
 
