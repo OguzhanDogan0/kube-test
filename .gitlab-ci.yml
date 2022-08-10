@@ -1,16 +1,40 @@
-sonarqube-check:
-  image: 
-    name: sonarsource/sonar-scanner-cli:latest
-    entrypoint: [""]
-  variables:
-    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
-    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .sonar/cache
-  script: 
-    - sonar-scanner
-  allow_failure: true
+stages:
+  - build
+  - test
+  - deploy
+
+    
+build-job:
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+
+sonarqube_master_job:
+  stage: test
   only:
-    - main # or the name of your main branch
+    - main
+  script:
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.password=$SONAR_PASSWORD
+
+unit-test-job:   
+  stage: test    
+  script:
+    - echo "Running unit tests... This will take about 60 seconds."
+    - sleep 5
+    - echo "Code coverage is 90%"
+
+lint-test-job:
+  stage: test    
+  script:
+    - echo "Linting code... This will take about 10 seconds."
+    - sleep 5
+    - echo "No lint issues found."
+
+deploy-job:      
+  stage: deploy
+  script:
+    - echo "Dploying application..."
+    - echo "Application successfully deployed."
+
+
