@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId></groupId>
+	<groupId>com.crudapi</groupId>
 	<artifactId>crudapi</artifactId>
 	<version>1.0.0</version>
 </project>
