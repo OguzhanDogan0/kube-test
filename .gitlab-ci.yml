@@ -1,16 +1,12 @@
-image: node:latest
-# This folder is cached between builds
-# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
-cache:
-  paths:
-    - node_modules/
+  build image:
+    image: docker:20.10.10
+    services:
+        - docker:20.10.10-dind
+    rules:
+        - if: $CI_PIPELINE_SOURCE == "schedule"        
+    script:
+        - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+        - docker build -t $CI_REGISTRY_IMAGE .
+        - docker push $CI_REGISTRY_IMAGE
 
-before_script:
-  - npm install
-  - npm build
-  - npm -version
-  - echo "Test başarılı"
-
-test:lint:
-  script:
-    - eslint src/*
+        
