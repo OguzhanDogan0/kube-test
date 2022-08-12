@@ -1,4 +1,4 @@
-const { required } = require("nodemon/lib/config");
+/*const { required } = require("nodemon/lib/config");
 
 var assert = require('assert');
 
@@ -8,4 +8,4 @@ describe("#indexOf()", function(){
         assert.equal([1,2,3].indexOf(4), -1);
     });
 });
-});
+});*/
