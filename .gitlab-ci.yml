@@ -1,24 +1,29 @@
-  stages:        
-     - build
-     - test
+stages:        
+  - build
+  - test
 
-  build image:
-    image: docker:20.10.10
-    stage: build
-    services:
-      - docker:20.10.10-dind
+build-job:     
+  image: docker:20.10.10
+  stage: build
+  services:
+    - docker:20.10.10-dind
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
 
-    script:
-      - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-      - docker build -t $CI_REGISTRY_IMAGE .
-      - docker push $CI_REGISTRY_IMAGE
-    #test23
-  unit-test-job:
-    image: $CI_REGISTRY_IMAGE   
-    stage: test    
-    script:
-      - npm install
-      - npm run test
-    tags:
-      - docker  
-        
+unit-test-job:
+  image: $CI_REGISTRY_IMAGE   
+  stage: test    
+  script:
+    - npm install
+    - npm run test
+  tags:
+    - docker  
+
+lint-test-job:  
+  stage: test    
+  script:
+    - echo "Linting code... This will take about 10 seconds."
+    - sleep 4
+    - echo "No lint issues found."
