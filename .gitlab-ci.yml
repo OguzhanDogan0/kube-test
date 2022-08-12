@@ -17,14 +17,10 @@
     image: $CI_REGISTRY_IMAGE   
     stage: test    
     script:
-<<<<<<< HEAD
       - npm install
       - mocha --version
-      - mocha
-=======
       - npm install mocha
-      - npm run test
->>>>>>> 607ef6d (rere)
+      - mocha
     tags:
       - docker  
         
