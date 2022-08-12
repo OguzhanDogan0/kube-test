@@ -19,7 +19,7 @@
     script:
       - npm install
       - npm install mocha
-      - mocha
+      - mocha --version
     tags:
       - docker  
         
