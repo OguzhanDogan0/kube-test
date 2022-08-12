@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "data.js",
   "scripts": {
+    "mocha": "node_modules/mocha/bin/mocha",
     "start": "node index.js",
     "server": "nodemon index.js",
     "test": "mocha"
