@@ -17,6 +17,7 @@
     image: $CI_REGISTRY_IMAGE   
     stage: test    
     script:
+      - npm install
       - npm install mocha
       - npm run test
     tags:
