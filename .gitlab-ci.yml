@@ -19,6 +19,7 @@
     script:
       - npm install
       - npm install --global mocha
+      - npm install --save-dev mocha
       - mocha --version
       - mocha
     tags:
