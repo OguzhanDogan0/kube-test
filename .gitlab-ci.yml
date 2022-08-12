@@ -18,8 +18,9 @@
     stage: test    
     script:
       - npm install
-      - npm install mocha
+      - npm install --global mocha
       - mocha --version
+      - mocha
     tags:
       - docker  
         
