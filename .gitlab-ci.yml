@@ -17,6 +17,7 @@ unit-test-job:
   stage: test    
   script:
     - npm install
+    - npm install -g jest
     - npm run test
   tags:
     - docker  
