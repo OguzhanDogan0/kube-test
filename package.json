@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "main": "data.js",
   "scripts": {
-    "mocha": "node_modules/mocha/bin/mocha",
     "start": "node index.js",
     "server": "nodemon index.js",
-    "test": "mocha"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -15,8 +14,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "jest": "^28.1.3",
     "knex": "^2.2.0",
-    "mocha":"^10.0.0",
+    "mocha": "^10.0.0",
     "nodemon": "^2.0.19",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
