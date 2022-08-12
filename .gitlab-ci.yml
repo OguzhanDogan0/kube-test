@@ -26,4 +26,4 @@ lint-test-job:
   script:
     - echo "Linting code... This will take about 10 seconds."
     - sleep 4
-    - echo "No lint issues found."
+    - echo "No lint issues f2ound."
