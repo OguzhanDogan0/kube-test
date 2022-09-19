@@ -1,18 +1,27 @@
-FROM node:10.15.2-alpine AS appbuild
-WORKDIR /usr/src/app
-COPY package.json ./
-COPY . ./
-RUN npm install
-COPY . ./
-RUN npm build
-# Build Stage 2
 
+FROM node:14-slim As development
 
-FROM node:10.15.2-alpine
 WORKDIR /usr/src/app
-COPY package.json ./
-COPY . ./
-RUN npm install
-COPY . ./
-EXPOSE 9000
-CMD [ "node", ".js" ]
+
+COPY package*.json ./
+
+RUN npm install --only=development
+
+COPY . .
+
+FROM node:14-slim As production
+
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install --only=production
+
+COPY . .
+
+COPY --from=development /usr/src/app/ ./
+
+CMD ["npm", "run", "start"]
