@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    enviroment{
+    environment{
         IMAGENAME = "restfuladpi"
         DOCKERHUB_CREDENTIALS = credentials('docker-hub-oguzhandogan')
         
