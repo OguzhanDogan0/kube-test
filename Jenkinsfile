@@ -2,7 +2,7 @@ pipeline {
     agent any
     enviroment{
         IMAGENAME = "restfuladpi"
-        DOCKERHUB_CREDENTIALS = credentials('oguzhandogan-docker')
+        DOCKERHUB_CREDENTIALS = credentials('docker-hub-oguzhandogan')
         
     }
     stages {
