@@ -2,10 +2,10 @@ module.exports = {
     development: {
         client: "pg",
         connection: {
-            database: "sigmademo",
-            user: "demo",
-            password: "Demo1.",
-            host: '185.133.252.215',
+            database: "db_database",
+            user: "db_user",
+            password: "db_pass",
+            host: 'host-ip',
             port:'5432',
         },
         //Şema
